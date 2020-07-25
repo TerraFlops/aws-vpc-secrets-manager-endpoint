@@ -9,6 +9,6 @@ resource "aws_vpc_endpoint" "secrets_manager" {
   security_group_ids = var.security_group_ids
   subnet_ids = var.subnet_ids
   tags = {
-    Name = "${data.aws_vpc.vpc.tags["Name"]}SecretsManagerVpcEndpoint"
+    Name = var.name == null ? "${data.aws_vpc.vpc.tags["Name"]}SecretsManagerVpcEndpoint" : var.name
   }
 }
